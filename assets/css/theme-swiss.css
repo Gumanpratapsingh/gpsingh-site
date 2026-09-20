@@ -59,39 +59,20 @@ body.theme-swiss .job__period{text-transform:none;letter-spacing:0;font-size:.82
 body.theme-swiss .contact__label{text-transform:none;letter-spacing:0;font-weight:500;color:var(--ink)}
 body.theme-swiss .colophon{text-align:left;border-top:6px solid var(--ink);margin-top:4rem}
 
-/* ---- full-bleed grid ------------------------------------------------ */
-/* The International Style answer to a wide screen is not a wider column
-   of text — it is a grid. The page fills the viewport; headings take a
-   flush-left column of their own and prose keeps a readable measure. */
-body.theme-swiss{--measure:none; --gutter:clamp(1.25rem,5vw,5rem)}
+/* ---- full bleed, flush left ---------------------------------------- */
+/* The page fills the viewport and every element starts at the same left
+   edge. Prose keeps a readable measure; the width goes to the card grid. */
+body.theme-swiss{--measure:none; --gutter:clamp(1.25rem,5vw,4.5rem)}
 body.theme-swiss .paper{border-left:0;border-right:0}
+body.theme-swiss .masthead__name{font-size:clamp(2.6rem,8.5vw,7.5rem)}
+body.theme-swiss .masthead__tagline{max-width:40ch}
+body.theme-swiss .prose p,
+body.theme-swiss .section__lede,
+body.theme-swiss .bullets,
+body.theme-swiss .article__lede{max-width:68ch}
+body.theme-swiss .contact{max-width:52rem}
 
 @media(min-width:64rem){
-  body.theme-swiss .section{
-    display:grid;
-    grid-template-columns:minmax(11rem,18%) minmax(0,1fr);
-    column-gap:clamp(2rem,4vw,5rem);
-    align-items:start;
-  }
-  body.theme-swiss .section > *{grid-column:2;margin-top:0}
-  body.theme-swiss .section__title{
-    grid-column:1; grid-row:1; margin:0;
-    font-size:clamp(1.5rem,.9rem + 1.3vw,2.25rem);
-    position:sticky; top:1.5rem;
-  }
-  body.theme-swiss .section__lede{margin-bottom:2rem}
-  body.theme-swiss .section > * + *{margin-top:1.5rem}
-
-  /* masthead gets the same two-column spine */
-  body.theme-swiss .masthead{
-    display:grid;
-    grid-template-columns:minmax(11rem,18%) minmax(0,1fr);
-    column-gap:clamp(2rem,4vw,5rem);
-    align-items:end;
-  }
-  body.theme-swiss .masthead__rule{grid-column:1/-1}
-  body.theme-swiss .masthead__kicker{grid-column:1;margin:0;align-self:start;padding-top:.4rem}
-  body.theme-swiss .masthead__name{grid-column:2;font-size:clamp(3.5rem,9vw,8.5rem)}
-  body.theme-swiss .masthead__tagline{grid-column:2;max-width:32ch}
-  body.theme-swiss .nav{grid-column:2}
+  body.theme-swiss .section{margin-bottom:6rem}
+  body.theme-swiss .section__title{margin-bottom:2rem}
 }
