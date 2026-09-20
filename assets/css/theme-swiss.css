@@ -1,0 +1,97 @@
+/* Swiss / International Style — Basel, c.1955. Grid, grotesque, red accent, air. */
+body.theme-swiss{
+  --bg:#ffffff; --paper:#ffffff; --ink:#111111; --ink-soft:#6b6b6b;
+  --accent:#e2231a; --accent-2:#111111; --rule:#111111; --rule-thin:rgba(17,17,17,.16);
+  --card-bg:#ffffff; --card-border:transparent; --card-radius:0; --card-shadow:none;
+  --font-display:'Inter',Helvetica,Arial,sans-serif;
+  --font-body:'Inter',Helvetica,Arial,sans-serif;
+  --font-meta:'Inter',Helvetica,Arial,sans-serif;
+  --stamp-bg:#e2231a; --stamp-ink:#ffffff;
+}
+body.theme-swiss{line-height:1.55}
+body.theme-swiss .paper{border-left:1px solid var(--rule-thin);border-right:1px solid var(--rule-thin)}
+body.theme-swiss .masthead{text-align:left;padding-bottom:0}
+body.theme-swiss .masthead__rule--top{height:6px;background:var(--ink)}
+body.theme-swiss .masthead__rule--bottom{height:1px;background:var(--rule-thin);margin-top:2.5rem}
+body.theme-swiss .masthead__kicker{
+  color:var(--accent);font-weight:500;letter-spacing:.12em;font-size:.72rem;margin-bottom:1.5rem;
+}
+body.theme-swiss .masthead__name{
+  font-weight:900;letter-spacing:-.045em;line-height:.9;
+  font-size:clamp(2.6rem,11vw,7rem);
+}
+body.theme-swiss .masthead__tagline{
+  margin:1.25rem 0 0;font-style:normal;color:var(--ink);font-weight:400;
+  max-width:26ch;font-size:clamp(1.05rem,1rem + .4vw,1.35rem);line-height:1.35;
+}
+body.theme-swiss .nav{justify-content:flex-start;gap:.35rem 2rem;margin-top:1.25rem}
+body.theme-swiss .nav__link{font-weight:500;letter-spacing:.02em;text-transform:none;font-size:.9rem}
+body.theme-swiss .section{margin-bottom:5rem}
+body.theme-swiss .section__title{
+  font-weight:700;letter-spacing:-.035em;line-height:1;
+  font-size:clamp(1.75rem,1.2rem + 2.4vw,3.25rem);margin-bottom:1.5rem;
+}
+body.theme-swiss .section__lede{font-style:normal;color:var(--ink-soft);max-width:48ch}
+body.theme-swiss .prose p{font-size:1.05rem}
+/* the Swiss look is the grid itself, not ornament */
+body.theme-swiss .ornament{margin:0;height:0;overflow:hidden}
+body.theme-swiss .cards{gap:3rem 2.5rem}
+body.theme-swiss .card{padding:1.25rem 0 0;border:0;border-top:3px solid var(--ink)}
+body.theme-swiss .card:hover{transform:none}
+body.theme-swiss .card:hover .card__title a{color:var(--accent)}
+body.theme-swiss .card__head{text-transform:none;letter-spacing:.02em;font-weight:500;font-size:.78rem}
+body.theme-swiss .card__no{color:var(--accent);font-weight:700}
+body.theme-swiss .card__title{font-weight:700;letter-spacing:-.03em;font-size:1.6rem;line-height:1.1}
+body.theme-swiss .card__blurb{color:var(--ink);font-size:.95rem}
+body.theme-swiss .card__more{text-transform:none;letter-spacing:0;font-weight:500;font-size:.85rem}
+body.theme-swiss .stamp{font-weight:500;letter-spacing:.06em;padding:.2rem .5rem}
+body.theme-swiss .tag{
+  border:0;padding:0 .85rem 0 0;color:var(--ink-soft);text-transform:none;
+  letter-spacing:0;font-size:.82rem;
+}
+body.theme-swiss .btn{
+  text-transform:none;letter-spacing:0;font-weight:500;font-size:.9rem;
+  border-radius:0;padding:.8rem 1.6rem;
+}
+body.theme-swiss .job{border-left:0;padding-left:0;border-top:1px solid var(--rule-thin);padding-top:1rem}
+body.theme-swiss .job__role{font-weight:700;letter-spacing:-.02em}
+body.theme-swiss .job__period{text-transform:none;letter-spacing:0;font-size:.82rem;color:var(--accent)}
+body.theme-swiss .contact__label{text-transform:none;letter-spacing:0;font-weight:500;color:var(--ink)}
+body.theme-swiss .colophon{text-align:left;border-top:6px solid var(--ink);margin-top:4rem}
+
+/* ---- full-bleed grid ------------------------------------------------ */
+/* The International Style answer to a wide screen is not a wider column
+   of text — it is a grid. The page fills the viewport; headings take a
+   flush-left column of their own and prose keeps a readable measure. */
+body.theme-swiss{--measure:none; --gutter:clamp(1.25rem,5vw,5rem)}
+body.theme-swiss .paper{border-left:0;border-right:0}
+
+@media(min-width:64rem){
+  body.theme-swiss .section{
+    display:grid;
+    grid-template-columns:minmax(11rem,18%) minmax(0,1fr);
+    column-gap:clamp(2rem,4vw,5rem);
+    align-items:start;
+  }
+  body.theme-swiss .section > *{grid-column:2;margin-top:0}
+  body.theme-swiss .section__title{
+    grid-column:1; grid-row:1; margin:0;
+    font-size:clamp(1.5rem,.9rem + 1.3vw,2.25rem);
+    position:sticky; top:1.5rem;
+  }
+  body.theme-swiss .section__lede{margin-bottom:2rem}
+  body.theme-swiss .section > * + *{margin-top:1.5rem}
+
+  /* masthead gets the same two-column spine */
+  body.theme-swiss .masthead{
+    display:grid;
+    grid-template-columns:minmax(11rem,18%) minmax(0,1fr);
+    column-gap:clamp(2rem,4vw,5rem);
+    align-items:end;
+  }
+  body.theme-swiss .masthead__rule{grid-column:1/-1}
+  body.theme-swiss .masthead__kicker{grid-column:1;margin:0;align-self:start;padding-top:.4rem}
+  body.theme-swiss .masthead__name{grid-column:2;font-size:clamp(3.5rem,9vw,8.5rem)}
+  body.theme-swiss .masthead__tagline{grid-column:2;max-width:32ch}
+  body.theme-swiss .nav{grid-column:2}
+}

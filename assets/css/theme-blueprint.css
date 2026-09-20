@@ -1,0 +1,64 @@
+/* Blueprint — drafting-table cyanotype. Grid paper, hairline rules, technical mono. */
+body.theme-blueprint{
+  --bg:#0b2545; --paper:#123b66; --ink:#e4f0fb; --ink-soft:#9dc0e0;
+  --accent:#ffd166; --accent-2:#7fd4ff; --rule:#e4f0fb; --rule-thin:rgba(228,240,251,.3);
+  --card-bg:rgba(9,32,58,.55); --card-border:rgba(127,212,255,.45); --card-radius:0;
+  --card-shadow:none;
+  --font-display:'IBM Plex Mono',ui-monospace,monospace;
+  --font-body:'IBM Plex Mono',ui-monospace,monospace;
+  --font-meta:'IBM Plex Mono',ui-monospace,monospace;
+  --stamp-bg:transparent; --stamp-ink:#ffd166;
+}
+body.theme-blueprint{font-size:clamp(.9rem,.86rem + .18vw,.96rem);line-height:1.7}
+body.theme-blueprint .paper{
+  background-image:
+    linear-gradient(rgba(228,240,251,.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(228,240,251,.09) 1px, transparent 1px),
+    linear-gradient(rgba(228,240,251,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(228,240,251,.045) 1px, transparent 1px);
+  background-size:100px 100px,100px 100px,20px 20px,20px 20px;
+  border:1px solid var(--rule-thin);
+}
+body.theme-blueprint .masthead{text-align:left}
+body.theme-blueprint .masthead__rule{height:1px;background:var(--rule-thin)}
+body.theme-blueprint .masthead__kicker{color:var(--accent-2);letter-spacing:.26em}
+body.theme-blueprint .masthead__kicker::before{content:"DWG. ";opacity:.6}
+body.theme-blueprint .masthead__name{
+  font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  font-size:clamp(1.8rem,6vw,3.4rem);color:var(--ink);
+}
+body.theme-blueprint .masthead__tagline{
+  margin-left:0;font-style:normal;color:var(--accent-2);font-size:.9rem;
+  border-top:1px dashed var(--rule-thin);padding-top:.6rem;
+}
+body.theme-blueprint .nav{justify-content:flex-start;gap:.35rem 1.4rem}
+body.theme-blueprint .nav__link{font-size:.72rem;color:var(--ink-soft)}
+body.theme-blueprint .nav__link:hover,body.theme-blueprint .nav__link.is-active{color:var(--accent);border-bottom-color:var(--accent)}
+body.theme-blueprint .section__title{
+  font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  font-size:clamp(1.1rem,.95rem + .9vw,1.6rem);
+  border-bottom:1px dashed var(--rule-thin);padding-bottom:.5rem;
+}
+body.theme-blueprint .section__title::before{content:"◤ ";color:var(--accent)}
+body.theme-blueprint .ornament span{background:repeating-linear-gradient(90deg,var(--rule-thin) 0 8px,transparent 8px 16px)}
+body.theme-blueprint .ornament b{color:var(--accent);font-size:.85rem}
+body.theme-blueprint .card{
+  border:1px dashed var(--card-border);
+  backdrop-filter:blur(1px);
+}
+body.theme-blueprint .card:hover{border-style:solid;border-color:var(--accent);transform:none}
+body.theme-blueprint .card__no{color:var(--accent)}
+body.theme-blueprint .card__title{font-size:1.05rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+body.theme-blueprint .card__title a:hover{color:var(--accent)}
+body.theme-blueprint .card__more{color:var(--accent);font-size:.7rem}
+body.theme-blueprint .stamp{border:1px dashed var(--accent);color:var(--accent);letter-spacing:.2em;padding:.15rem .5rem}
+body.theme-blueprint .tag{border:1px solid var(--rule-thin);color:var(--ink-soft);font-size:.66rem}
+body.theme-blueprint .btn{background:var(--accent);color:#0b2545;border-color:var(--accent);font-weight:700}
+body.theme-blueprint .btn:hover{background:transparent;color:var(--accent)}
+body.theme-blueprint .btn--ghost{color:var(--accent-2);border-color:var(--accent-2)}
+body.theme-blueprint .btn--ghost:hover{background:var(--accent-2);color:#0b2545}
+body.theme-blueprint .job{border-left:2px solid var(--accent)}
+body.theme-blueprint .contact__label::after{content:" ——";opacity:.4}
+body.theme-blueprint .bullets{list-style:none;padding-left:0}
+body.theme-blueprint .bullets li::before{content:"▸ ";color:var(--accent)}
+body.theme-blueprint .colophon{text-align:left;border-top:1px dashed var(--rule-thin);font-size:.72rem}

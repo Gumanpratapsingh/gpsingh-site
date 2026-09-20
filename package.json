@@ -1,0 +1,14 @@
+{
+  "name": "gpsingh-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Personal site + project register for Guman Pratap Singh",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/build.mjs --preview && node scripts/serve.mjs",
+    "serve": "node scripts/serve.mjs",
+    "add": "node scripts/add-project.mjs"
+  },
+  "engines": { "node": ">=18" }
+}

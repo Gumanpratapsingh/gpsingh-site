@@ -1,0 +1,33 @@
+{
+  "name": "Guman Pratap Singh",
+  "shortName": "G. P. Singh",
+  "handle": "gpsingh",
+  "tagline": "Builder of small, stubbornly useful things",
+  "kicker": "Software Engineer · Weekend Tinkerer",
+  "location": "India",
+  "established": "MCMLII",
+  "bio": [
+    "I build software that does one real job well — voice agents that actually answer the phone, tools that run on free tiers, weekend experiments that occasionally turn into something.",
+    "Most of what you'll find below started on a Saturday. Some of it survived to Monday."
+  ],
+  "email": "gumanfinzly@gmail.com",
+  "links": {
+    "github": "https://github.com/Gumanpratapsingh",
+    "linkedin": "https://www.linkedin.com/in/REPLACE-ME",
+    "resume": "assets/resume.pdf",
+    "twitter": ""
+  },
+  "skills": [
+    "Node.js", "JavaScript", "Python", "React",
+    "Twilio / Telephony", "LLM plumbing", "Supabase / Postgres",
+    "Docker", "Cloudflare", "GitHub Actions"
+  ],
+  "experience": [
+    {
+      "role": "Software Engineer",
+      "org": "REPLACE-ME",
+      "period": "2024 — Present",
+      "note": "Replace this block in data/profile.json with your real history."
+    }
+  ]
+}

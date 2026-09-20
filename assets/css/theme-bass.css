@@ -1,0 +1,61 @@
+/* Saul Bass — 1955-59 title-sequence graphics. Cut-paper shapes, heavy condensed caps. */
+body.theme-bass{
+  --bg:#e6e0d2; --paper:#f2ece0; --ink:#17140f; --ink-soft:#6a6254;
+  --accent:#d8432c; --accent-2:#17140f; --rule:#17140f; --rule-thin:rgba(23,20,15,.22);
+  --card-bg:#f2ece0; --card-border:#17140f; --card-radius:0;
+  --card-shadow:none;
+  --font-display:'Anton',Impact,sans-serif;
+  --font-body:'Work Sans',system-ui,sans-serif;
+  --font-meta:'Work Sans',system-ui,sans-serif;
+  --stamp-bg:#17140f; --stamp-ink:#f2ece0;
+}
+body.theme-bass .paper{box-shadow:0 0 0 1px rgba(23,20,15,.1)}
+body.theme-bass .masthead{text-align:left}
+body.theme-bass .masthead__rule--top{height:22px;background:var(--accent)}
+body.theme-bass .masthead__rule--bottom{height:5px;background:var(--ink)}
+body.theme-bass .masthead__kicker{color:var(--accent);font-weight:700;letter-spacing:.26em}
+body.theme-bass .masthead__name{
+  font-weight:400;text-transform:uppercase;letter-spacing:.01em;line-height:.88;
+  font-size:clamp(2.8rem,13vw,8rem);color:var(--ink);
+}
+body.theme-bass .masthead__tagline{
+  margin-left:0;font-style:normal;text-transform:uppercase;letter-spacing:.14em;
+  font-weight:700;font-size:.82rem;color:var(--accent);
+}
+body.theme-bass .nav{justify-content:flex-start;gap:.35rem 1.75rem}
+body.theme-bass .nav__link{font-weight:700;font-size:.78rem}
+body.theme-bass .section__title{
+  font-weight:400;text-transform:uppercase;letter-spacing:.005em;line-height:.95;
+  font-size:clamp(2rem,1.3rem + 3vw,4rem);
+}
+body.theme-bass .section__title::after{
+  content:"";display:block;width:4.5rem;height:10px;background:var(--accent);margin-top:.85rem;
+}
+body.theme-bass .section__lede{font-weight:600;color:var(--ink)}
+body.theme-bass .ornament span{height:5px;background:var(--ink);opacity:.9}
+body.theme-bass .ornament b{color:var(--accent);font-size:1.3rem}
+body.theme-bass .cards{gap:1.5rem}
+body.theme-bass .card{border-width:4px;padding:0}
+body.theme-bass .card > *{padding-left:1.4rem;padding-right:1.4rem}
+body.theme-bass .card__head{
+  background:var(--ink);color:var(--paper);margin:0;padding-top:.6rem;padding-bottom:.6rem;
+  font-weight:700;letter-spacing:.12em;
+}
+body.theme-bass .card__no{color:#f2b705}
+body.theme-bass .card__date{color:var(--paper);opacity:.8}
+body.theme-bass .card__title{
+  font-weight:400;text-transform:uppercase;font-size:1.75rem;line-height:1;
+  margin-top:1.1rem;letter-spacing:.005em;
+}
+body.theme-bass .card:hover{transform:translateY(-4px)}
+body.theme-bass .card:hover .card__title a{color:var(--accent)}
+body.theme-bass .card__more{font-weight:700;padding-bottom:1.4rem}
+body.theme-bass .card__blurb{color:var(--ink)}
+body.theme-bass .tag{border:3px solid var(--ink);font-weight:700;padding:.2rem .55rem}
+body.theme-bass .stamp{font-weight:700;margin-left:1.4rem;align-self:flex-start;padding:.25rem .6rem}
+body.theme-bass .btn{font-weight:700;border-width:4px}
+body.theme-bass .job{border-left:10px solid var(--accent)}
+body.theme-bass .job__role{font-weight:400;text-transform:uppercase;font-size:1.45rem}
+body.theme-bass .contact__label{font-weight:700;color:var(--ink)}
+body.theme-bass .contact__row{border-bottom:3px solid var(--ink)}
+body.theme-bass .colophon{text-align:left;border-top:22px solid var(--accent);padding-top:1.25rem}

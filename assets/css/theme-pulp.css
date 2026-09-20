@@ -1,0 +1,47 @@
+/* Pulp Sci-Fi — 1950s ray-gun gothic paperback. Ink-black, atomic orange, chartreuse. */
+body.theme-pulp{
+  --bg:#0d0b14; --paper:#141120; --ink:#f3ecdd; --ink-soft:#a79fbb;
+  --accent:#ff5c2b; --accent-2:#c9f24d; --rule:#f3ecdd; --rule-thin:rgba(243,236,221,.22);
+  --card-bg:#1c1830; --card-border:#3a3357; --card-radius:3px;
+  --card-shadow:0 0 0 1px rgba(201,242,77,.12), 0 14px 32px rgba(0,0,0,.55);
+  --font-display:'Bungee',Impact,sans-serif;
+  --font-body:'Work Sans',system-ui,sans-serif;
+  --font-meta:'Oswald',system-ui,sans-serif;
+  --stamp-bg:#ff5c2b; --stamp-ink:#140f0a;
+  background-image:
+    radial-gradient(ellipse at 50% -10%, rgba(255,92,43,.22), transparent 55%),
+    radial-gradient(circle at 85% 8%, rgba(201,242,77,.14), transparent 40%);
+  background-attachment:fixed;
+}
+body.theme-pulp .paper{box-shadow:0 0 90px rgba(255,92,43,.14)}
+body.theme-pulp .masthead__rule{
+  height:0;border-top:3px solid var(--accent);border-bottom:1px solid var(--accent-2);
+  padding-bottom:3px;background:none;
+}
+body.theme-pulp .masthead__kicker{color:var(--accent-2);letter-spacing:.34em}
+body.theme-pulp .masthead__name{
+  text-transform:uppercase; color:var(--accent-2); line-height:1.02;
+  font-size:clamp(1.9rem,7.5vw,4.6rem); letter-spacing:.01em;
+  text-shadow:0 0 22px rgba(201,242,77,.45), 5px 5px 0 var(--accent);
+}
+body.theme-pulp .masthead__tagline{color:var(--ink);font-style:italic}
+body.theme-pulp .nav__link{color:var(--ink-soft)}
+body.theme-pulp .nav__link:hover,body.theme-pulp .nav__link.is-active{color:var(--accent-2);border-bottom-color:var(--accent-2)}
+body.theme-pulp .section__title{
+  text-transform:uppercase; color:var(--ink); font-size:clamp(1.25rem,1rem + 1.4vw,2rem);
+  text-shadow:3px 3px 0 var(--accent);
+}
+body.theme-pulp .ornament span{background:linear-gradient(90deg,transparent,var(--accent) 50%,transparent)}
+body.theme-pulp .ornament b{color:var(--accent-2);text-shadow:0 0 12px rgba(201,242,77,.7)}
+body.theme-pulp .card:hover{box-shadow:0 0 0 1px var(--accent-2), 0 18px 38px rgba(0,0,0,.6)}
+body.theme-pulp .card__title{font-size:1.15rem;text-transform:uppercase;line-height:1.3}
+body.theme-pulp .card__title a:hover{color:var(--accent-2)}
+body.theme-pulp .card__no{color:var(--accent-2)}
+body.theme-pulp .tag{border:1px solid var(--accent-2);color:var(--accent-2);border-radius:2px}
+body.theme-pulp .stamp{font-weight:600;transform:rotate(-2deg);border-radius:2px}
+body.theme-pulp .btn{color:#140f0a;font-weight:600}
+body.theme-pulp .btn--ghost{color:var(--accent-2);border-color:var(--accent-2);background:transparent}
+body.theme-pulp .btn--ghost:hover{background:var(--accent-2);color:#140f0a}
+body.theme-pulp .job{border-left:3px solid var(--accent-2)}
+body.theme-pulp .contact__value:hover{color:var(--accent-2)}
+body.theme-pulp .colophon{border-top:1px solid var(--rule-thin)}

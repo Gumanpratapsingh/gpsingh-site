@@ -1,0 +1,36 @@
+[
+  {
+    "slug": "ai-call-assistant",
+    "title": "AI Call Assistant",
+    "blurb": "A self-hosted AI phone assistant. Someone calls your number, an AI answers, holds a real conversation, books appointments and takes messages.",
+    "date": "2026-09-20",
+    "status": "shipped",
+    "tags": ["Node.js", "Twilio", "Groq", "Whisper", "Supabase"],
+    "links": {
+      "repo": "https://github.com/Gumanpratapsingh/ai-call-assistant",
+      "demo": ""
+    },
+    "highlights": [
+      "Streaming conversation with barge-in — interrupt it mid-sentence and it stops and listens.",
+      "Books real appointments against multiple staff Google Calendars over OAuth 2.0.",
+      "Detects missed calls and offers one-click callbacks from the dashboard.",
+      "Runs on free tiers: Groq for LLM + Whisper, local TTS, Cloudflare tunnel. Twilio is the only line item."
+    ],
+    "body": "Caller hits a Twilio number, TwiML opens a Media Streams WebSocket, and 8 kHz mu-law frames flow both ways. VAD handles endpointing, Groq Whisper transcribes, Llama replies, and TTS goes back down the same socket. Calls, transcripts, tasks and staff credentials persist to Supabase so nothing is lost when the container sleeps."
+  },
+  {
+    "slug": "saas-opportunity-scan",
+    "title": "SaaS Opportunity Scan",
+    "blurb": "A weekend research pass on where the actual B2B pain is — and proof that X trends are the wrong instrument for finding it.",
+    "date": "2026-09-12",
+    "status": "weekend build",
+    "tags": ["Research", "Market analysis"],
+    "links": { "repo": "", "demo": "" },
+    "highlights": [
+      "Pulled 50 US X trends: ~60% sports, ~20% wrestling, 0% software. Structural, not a bad day.",
+      "Cross-read Hacker News upvotes and Product Hunt launches instead.",
+      "Found the convergent theme: AI agents are doing real work inside companies and the governance/cost/trust layer does not exist yet."
+    ],
+    "body": "Trends rank by velocity of mention, which live events dominate by design. B2B pain is discussed steadily by small numbers of people, so it never spikes. Upvote-weighted sources surface it; trend lists never will."
+  }
+]

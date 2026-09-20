@@ -1,0 +1,73 @@
+/* Newspaper / Gazette — newsprint, hairline rules, Playfair nameplate, drop caps. */
+body.theme-gazette{
+  --bg:#ddd8cb; --paper:#f4f0e6; --ink:#16130f; --ink-soft:#544e44;
+  --accent:#8b1a12; --accent-2:#16130f; --rule:#16130f; --rule-thin:rgba(22,19,15,.28);
+  --card-bg:transparent; --card-border:transparent; --card-radius:0; --card-shadow:none;
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'Libre Baskerville',Georgia,serif;
+  --font-meta:'Oswald',system-ui,sans-serif;
+  --stamp-bg:transparent; --stamp-ink:#8b1a12;
+}
+body.theme-gazette .paper{
+  border-left:1px solid var(--rule-thin); border-right:1px solid var(--rule-thin);
+  box-shadow:0 0 40px rgba(22,19,15,.1);
+}
+body.theme-gazette{font-size:clamp(.95rem,.9rem + .18vw,1rem)}
+body.theme-gazette .masthead__rule{height:1px}
+body.theme-gazette .masthead__rule--bottom{
+  height:0;border-top:3px solid var(--ink);border-bottom:1px solid var(--ink);padding-bottom:3px;
+}
+body.theme-gazette .masthead__kicker{font-weight:400;font-size:.72rem;letter-spacing:.34em}
+body.theme-gazette .masthead__name{
+  font-weight:900; letter-spacing:-.02em; font-size:clamp(2.6rem,10vw,6.5rem);
+}
+body.theme-gazette .masthead__tagline{
+  font-family:var(--font-meta); font-style:normal; text-transform:uppercase;
+  letter-spacing:.2em; font-size:.8rem; color:var(--ink);
+  border-top:1px solid var(--rule-thin); border-bottom:1px solid var(--rule-thin);
+  padding:.5rem 0; max-width:40rem;
+}
+body.theme-gazette .nav{gap:.35rem 1.75rem}
+body.theme-gazette .nav__link{font-weight:400;font-size:.8rem}
+body.theme-gazette .section__title{font-weight:900;letter-spacing:-.015em}
+body.theme-gazette .section__title::after{
+  content:""; display:block; width:100%; height:0;
+  border-top:3px solid var(--ink); border-bottom:1px solid var(--ink);
+  padding-bottom:2px; margin-top:.5rem;
+}
+/* drop cap on the opening paragraph */
+body.theme-gazette #about .prose p:first-child::first-letter{
+  float:left; font-family:var(--font-display); font-weight:900; font-size:3.6em;
+  line-height:.78; padding:.06em .1em 0 0; color:var(--accent);
+}
+body.theme-gazette .ornament b{font-size:.9rem;color:var(--ink)}
+/* cards read as stacked column items separated by rules */
+body.theme-gazette .cards{gap:0 2.5rem}
+body.theme-gazette .card{
+  padding:1.5rem 0; border-top:1px solid var(--rule-thin);
+  border-left:0; border-right:0; border-bottom:0;
+}
+body.theme-gazette .card:hover{transform:none}
+body.theme-gazette .card:hover .card__title a{color:var(--accent)}
+body.theme-gazette .card__head{font-family:var(--font-meta);letter-spacing:.2em}
+body.theme-gazette .card__title{font-weight:900;font-size:1.6rem;letter-spacing:-.01em}
+body.theme-gazette .card__blurb{font-size:.92rem}
+body.theme-gazette .stamp{
+  padding:.2rem 0; font-family:var(--font-meta); border-bottom:2px solid var(--accent);
+  letter-spacing:.24em;
+}
+body.theme-gazette .tag{border:0;border-right:1px solid var(--rule-thin);padding:0 .6rem 0 0;font-size:.68rem}
+body.theme-gazette .tag:last-child{border-right:0}
+body.theme-gazette .btn{border-width:1px}
+body.theme-gazette .job{border-left:1px solid var(--rule-thin)}
+body.theme-gazette .article__lede{font-family:var(--font-display);font-size:1.3rem;font-style:italic;color:var(--ink)}
+body.theme-gazette .colophon{border-top:3px double var(--rule-thin)}
+
+@media(min-width:48rem){
+  body.theme-gazette .cards{column-gap:0}
+  body.theme-gazette .card{padding-left:1.5rem;padding-right:1.5rem}
+  body.theme-gazette .card:nth-child(odd){
+    border-right:1px solid var(--rule-thin); padding-left:0;
+  }
+  body.theme-gazette .card:nth-child(even){padding-right:0}
+}

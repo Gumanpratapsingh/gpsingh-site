@@ -1,0 +1,58 @@
+/* Atomic Age Diner — cream paper, aqua + tomato, chunky slab, hard offset shadows. */
+body.theme-atomic{
+  --bg:#efe2c8; --paper:#fffaf0; --ink:#241f1b; --ink-soft:#6a6055;
+  --accent:#c8452f; --accent-2:#2e9d9d; --rule:#241f1b; --rule-thin:rgba(36,31,27,.2);
+  --card-bg:#fffaf0; --card-border:#241f1b; --card-radius:2px;
+  --card-shadow:7px 7px 0 var(--accent-2);
+  --font-display:'Alfa Slab One',Georgia,serif;
+  --font-body:'Work Sans',system-ui,sans-serif;
+  --font-meta:'Work Sans',system-ui,sans-serif;
+  --stamp-bg:#c8452f; --stamp-ink:#fffaf0;
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(46,157,157,.18) 0 2px, transparent 3px),
+    radial-gradient(circle at 78% 62%, rgba(200,69,47,.16) 0 2px, transparent 3px);
+  background-size:190px 190px, 230px 230px;
+}
+body.theme-atomic .paper{
+  box-shadow:0 0 0 1px rgba(36,31,27,.12), 0 18px 50px rgba(36,31,27,.14);
+}
+body.theme-atomic .masthead__rule{
+  height:0; border-top:4px solid var(--ink); border-bottom:4px solid var(--accent-2);
+  padding-bottom:4px; background:none;
+}
+body.theme-atomic .masthead__kicker{color:var(--accent-2);font-weight:700}
+body.theme-atomic .masthead__name{
+  text-transform:uppercase; letter-spacing:.01em;
+  color:var(--accent);
+  text-shadow:4px 4px 0 var(--accent-2), 8px 8px 0 rgba(36,31,27,.14);
+}
+body.theme-atomic .masthead__tagline{
+  font-family:'Pacifico',cursive; font-style:normal;
+  color:var(--ink); font-size:clamp(1.15rem,1rem + .7vw,1.6rem); line-height:1.4;
+}
+body.theme-atomic .nav__link{font-weight:600}
+body.theme-atomic .section__title{
+  text-transform:uppercase; color:var(--ink);
+  text-shadow:3px 3px 0 rgba(46,157,157,.35);
+}
+/* boomerang divider */
+body.theme-atomic .ornament span{
+  height:3px;background:linear-gradient(90deg,transparent,var(--accent-2) 20%,var(--accent-2) 80%,transparent);
+}
+body.theme-atomic .ornament b{
+  color:var(--accent); font-size:1.5rem;
+  filter:drop-shadow(2px 2px 0 rgba(46,157,157,.6));
+}
+body.theme-atomic .card:hover{box-shadow:10px 10px 0 var(--accent);transform:translate(-3px,-3px)}
+body.theme-atomic .card__no{color:var(--accent);font-weight:700}
+body.theme-atomic .tag{
+  border:2px solid var(--accent-2); color:var(--ink); font-weight:600; border-radius:999px;
+}
+body.theme-atomic .stamp{
+  transform:rotate(-2.5deg); font-weight:700; border-radius:2px;
+  box-shadow:2px 2px 0 rgba(36,31,27,.25);
+}
+body.theme-atomic .btn{border-radius:999px;font-weight:700;box-shadow:4px 4px 0 var(--ink)}
+body.theme-atomic .btn:hover{box-shadow:2px 2px 0 var(--ink);transform:translate(2px,2px)}
+body.theme-atomic .job{border-left:5px solid var(--accent-2)}
+body.theme-atomic .colophon{border-top:4px double var(--rule-thin)}
