@@ -179,3 +179,12 @@ main{padding:2.5rem 0 1rem}
 
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 @media print{.tpbar,.nav{display:none}.paper{max-width:none}}
+
+/* résumé bullet points */
+.job__points{margin:.6rem 0 0;padding-left:1.1rem;max-width:66ch}
+.job__points li{margin-bottom:.4rem;color:var(--ink-soft);font-size:.95rem}
+body.theme-swiss .job__points li{color:var(--ink)}
+body.theme-punchcard .job__points,
+body.theme-blueprint .job__points{list-style:none;padding-left:0}
+body.theme-punchcard .job__points li::before{content:"- ";color:var(--accent-2)}
+body.theme-blueprint .job__points li::before{content:"- ";color:var(--accent)}

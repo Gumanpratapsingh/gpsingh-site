@@ -3,31 +3,64 @@
   "shortName": "G. P. Singh",
   "handle": "gpsingh",
   "tagline": "Builder of small, stubbornly useful things",
-  "kicker": "Software Engineer · Weekend Tinkerer",
-  "location": "India",
-  "established": "MCMLII",
+  "kicker": "Software Engineer at Finzly · Weekend Tinkerer",
+  "location": "Chennai, Tamil Nadu, India",
   "bio": [
-    "I build software that does one real job well — voice agents that actually answer the phone, tools that run on free tiers, weekend experiments that occasionally turn into something.",
-    "Most of what you'll find below started on a Saturday. Some of it survived to Monday."
+    "I'm an Associate Software Engineer at Finzly, working on payment processing and cloud infrastructure for multi-tenant banking platforms that serve 50+ financial institutions. Day to day that is Java, Spring Boot and AWS, and a fair amount of talking to product managers and banking clients about what they actually need.",
+    "Outside that I build small things that do one job well — voice agents that answer the phone, WhatsApp bots that take orders, tools that run on free tiers. Most of it started on a Saturday."
   ],
-  "email": "gumanfinzly@gmail.com",
+  "email": "gumanpratapsinghparmar@gmail.com",
   "links": {
     "github": "https://github.com/Gumanpratapsingh",
-    "linkedin": "https://www.linkedin.com/in/REPLACE-ME",
+    "linkedin": "https://www.linkedin.com/in/gpsinghh",
     "resume": "assets/resume.pdf",
     "twitter": ""
   },
   "skills": [
-    "Node.js", "JavaScript", "Python", "React",
-    "Twilio / Telephony", "LLM plumbing", "Supabase / Postgres",
-    "Docker", "Cloudflare", "GitHub Actions"
+    "Java", "Spring Boot", "Hibernate", "Spring Data JPA",
+    "TypeScript", "Angular", "Node.js", "SQL", "HTML/CSS",
+    "gRPC", "Microservices", "REST APIs",
+    "AWS", "Elasticsearch", "Git", "Apache JMeter",
+    "Twilio", "Postman", "DataDog", "Skooner"
   ],
   "experience": [
     {
-      "role": "Software Engineer",
-      "org": "REPLACE-ME",
-      "period": "2024 — Present",
-      "note": "Replace this block in data/profile.json with your real history."
+      "role": "Associate Software Engineer",
+      "org": "Finzly — Chennai, India",
+      "period": "Apr 2026 — Present",
+      "points": [
+        "Leading development of payment processing features and cloud infrastructure for multi-tenant banking clients serving 50+ financial institutions.",
+        "Work directly with product managers and banking clients to gather requirements, clarify business workflows, and translate them into scalable technical solutions."
+      ]
+    },
+    {
+      "role": "Software Engineering Trainee",
+      "org": "Finzly — Chennai, India",
+      "period": "Aug 2024 — Mar 2026",
+      "points": [
+        "Cut Payment Blotter API response time from 2–3 seconds to 300–600 ms through query optimization.",
+        "Built a scheduled Holiday Job that ingests third-party holiday data, stores files in environment-specific S3 buckets, and updates multi-tenant databases.",
+        "Built an HTML editor for client notification templates with automatic synchronization to S3 and GitHub.",
+        "Replaced Javers with audit logging via SQL triggers and AWS Lambda, reducing container overhead and enabling frontend audit visibility.",
+        "Integrated the Twilio Lookup API in Java to validate global phone numbers, and extended Angular UI components for in-app navigation."
+      ]
+    },
+    {
+      "role": "Intern",
+      "org": "Samsung PRISM — Virtual",
+      "period": "Jan 2023 — Aug 2023",
+      "points": [
+        "Worked on unsupervised synthetic-to-real domain adaptation for image segmentation.",
+        "Investigated existing segmentation solutions and datasets including SYNTHIA, Cityscapes, ADE20K and COCO.",
+        "Explored visualization techniques to make domain adaptation results more interpretable."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "B.Tech, Computer Science",
+      "school": "SRM Institute of Science and Technology — Chennai, TN",
+      "period": "Aug 2020 — May 2024"
     }
   ]
 }

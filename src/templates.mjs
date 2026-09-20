@@ -129,10 +129,18 @@ export function renderIndex({ profile, projects, theme, preview }) {
   const skills = (profile.skills || []).map((s) => `<li class="tag">${esc(s)}</li>`).join('');
   const bio = (profile.bio || []).map((p) => `<p>${esc(p)}</p>`).join('\n        ');
   const cards = projects.map((p) => projectCard(p, 0)).join('\n      ');
+  const points = (list) => (list || []).length
+    ? `<ul class="job__points">${list.map((pt) => `<li>${esc(pt)}</li>`).join('')}</ul>`
+    : '';
   const jobs = (profile.experience || []).map((j) => `<li class="job">
           <h3 class="job__role">${esc(j.role)}</h3>
           <p class="job__org">${esc(j.org)} <span class="job__period">${esc(j.period)}</span></p>
           ${j.note ? `<p class="job__note">${esc(j.note)}</p>` : ''}
+          ${points(j.points)}
+        </li>`).join('\n        ');
+  const schools = (profile.education || []).map((e) => `<li class="job">
+          <h3 class="job__role">${esc(e.degree)}</h3>
+          <p class="job__org">${esc(e.school)} <span class="job__period">${esc(e.period)}</span></p>
         </li>`).join('\n        ');
 
   const contactRow = (label, value, href) => href
@@ -166,9 +174,14 @@ ${preview ? previewBar(theme) : ''}
 
     <section class="section" id="resume">
       <h2 class="section__title">Particulars &amp; résumé</h2>
+      <h3 class="article__subhead">Experience</h3>
       <ul class="jobs">
         ${jobs}
       </ul>
+      ${schools ? `<h3 class="article__subhead">Education</h3>
+      <ul class="jobs">
+        ${schools}
+      </ul>` : ''}
       ${links.resume ? `<p class="section__cta"><a class="btn" href="${esc(links.resume)}">Download the full résumé</a></p>` : ''}
     </section>
 
