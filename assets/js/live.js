@@ -45,6 +45,15 @@
     });
   }
 
+  // One Groq-written line about recent commits; raw commits are never published.
+  function loadLately() {
+    var els = document.querySelectorAll('[data-live-lately]');
+    if (!els.length) return;
+    getJSON('/live/now.json').then(function (n) {
+      els.forEach(function (el) { el.textContent = 'Lately: ' + n.summary; el.hidden = !n.summary; });
+    }).catch(function () {});
+  }
+
   function link(text, href) {
     var a = document.createElement('a');
     a.href = href; a.textContent = text; a.rel = 'noopener';
@@ -104,7 +113,12 @@
           ? new Promise(function (res) { setTimeout(function () { res({ answer: 'Preview only: the real answer will come from the phone once the AI endpoint is switched on.' }); }, 600); })
           : fetch(ORIGIN + '/api/ask', {
               method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ q: q }),
-            }).then(function (r) { return r.json(); });
+            }).then(function (r) {
+              return r.json().catch(function () {
+                return { error: r.status === 429 ? 'Too many questions at once. Please wait a minute and try again.'
+                  : 'The phone did not answer. It may be offline right now.' };
+              });
+            });
         reply.then(function (d) { out.textContent = d.answer || d.error || 'No answer.'; })
           .catch(function () { out.textContent = 'The phone did not answer. It may be offline right now.'; })
           .finally(function () { btn.disabled = false; });
@@ -137,6 +151,7 @@
   if (PREVIEW) wirePreviewBar();
   loadStatus();
   loadCommits();
+  loadLately();
   wireAsk();
   setInterval(loadStatus, 60000);
 })();

@@ -70,7 +70,8 @@ const NOW = {
       <ul class="lv-now__commits" data-live-commits="6"><li class="lv-muted">Loading…</li></ul>
     </section>`,
   ticker: (entries) => `<p class="lv-ticker"><b>Now</b>
-      <span>${esc((entries[0] || {}).text || 'Building something new.')}</span></p>`,
+      <span>${esc((entries[0] || {}).text || 'Building something new.')}</span>
+      <span class="lv-ticker__lately" data-live-lately hidden></span></p>`,
   log: (entries) => `<section class="section lv-log" id="now">
       <h2 class="section__title">Changelog</h2>
       <pre class="lv-log__pre" data-live-log>${entries.slice(0, 5).map((e) => `${esc(e.date)}  ${esc(e.text)}`).join('\n')}</pre>

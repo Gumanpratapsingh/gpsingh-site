@@ -51,7 +51,7 @@ body[data-lv-ask="masthead"]   .lv-variant[data-feature="ask"][data-variant="mas
 .lv-ticker{display:flex;flex-wrap:wrap;gap:.35rem .75rem;align-items:baseline;margin:1.25rem 0 0;
   padding:.75rem 0 0;border-top:1px solid var(--rule-thin);font-size:.92rem;text-align:left}
 .lv-ticker b{font-family:var(--font-meta);color:var(--accent);text-transform:uppercase;letter-spacing:.12em;font-size:.72rem}
-.lv-ticker__commit{color:var(--ink-soft);font-size:.82rem}
+.lv-ticker__lately{flex-basis:100%;color:var(--ink-soft);font-size:.85rem}
 .lv-log__pre{margin:0;padding:1.25rem;background:var(--ink);color:var(--paper);overflow-x:auto;
   font:500 .82rem/1.7 'IBM Plex Mono',ui-monospace,Menlo,monospace;white-space:pre-wrap;max-width:100%}
 
