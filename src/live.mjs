@@ -76,17 +76,16 @@ function nowEntries(entries, limit) {
 const NOW = {
   section: (entries) => `<section class="section lv-now" id="now">
       <h2 class="section__title">Now</h2>
-      <p class="section__lede">What I'm building this week, and the latest commits, updated live.</p>
+      <p class="section__lede">What I'm building this week.</p>
       <ul class="lv-now__list">${nowEntries(entries, 5)}</ul>
-      <h3 class="article__subhead">Latest commits</h3>
-      <ul class="lv-now__commits" data-live-commits="6"><li class="lv-muted">Loading…</li></ul>
+      <p class="lv-muted" data-live-lately hidden></p>
     </section>`,
   ticker: (entries) => `<p class="lv-ticker"><b>Now</b>
       <span>${esc((entries[0] || {}).text || 'Building something new.')}</span>
       <span class="lv-ticker__lately" data-live-lately hidden></span></p>`,
   log: (entries) => `<section class="section lv-log" id="now">
       <h2 class="section__title">Changelog</h2>
-      <pre class="lv-log__pre" data-live-log>${entries.slice(0, 5).map((e) => `${esc(e.date)}  ${esc(e.text)}`).join('\n')}</pre>
+      <pre class="lv-log__pre">${entries.slice(0, 5).map((e) => `${esc(e.date)}  ${esc(e.text)}`).join('\n')}</pre>
     </section>`,
 };
 

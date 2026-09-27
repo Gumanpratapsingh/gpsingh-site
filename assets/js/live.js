@@ -1,6 +1,6 @@
 // Fills the live pieces with data from the phone server:
 //   /live/status.json  battery, temperature, uptime, pages served (public, coarse)
-//   /live/github.json  latest commits from public repos
+//   /live/now.json     one Groq-written line about recent work (cached a day on the phone)
 //   /api/ask           Ask-about-Guman answers (POST)
 // Everything degrades quietly: if the phone is unreachable the badge says so.
 (function () {
@@ -15,12 +15,6 @@
   function duration(sec) {
     var d = Math.floor(sec / 86400), h = Math.floor(sec % 86400 / 3600), m = Math.floor(sec % 3600 / 60);
     return d ? d + 'd ' + h + 'h' : h ? h + 'h ' + m + 'm' : m + 'm';
-  }
-
-  function ago(iso) {
-    var s = (Date.now() - new Date(iso).getTime()) / 1000;
-    return s < 3600 ? Math.max(1, Math.round(s / 60)) + ' min ago'
-      : s < 86400 ? Math.round(s / 3600) + ' h ago' : Math.round(s / 86400) + ' d ago';
   }
 
   function getJSON(path) {
@@ -52,50 +46,6 @@
     getJSON('/live/now.json').then(function (n) {
       els.forEach(function (el) { el.textContent = 'Lately: ' + n.summary; el.hidden = !n.summary; });
     }).catch(function () {});
-  }
-
-  function link(text, href) {
-    var a = document.createElement('a');
-    a.href = href; a.textContent = text; a.rel = 'noopener';
-    return a;
-  }
-
-  function loadCommits() {
-    if (!document.querySelector('[data-live-commits],[data-live-lastcommit],[data-live-log]')) return;
-    getJSON('/live/github.json').then(function (g) {
-      var commits = [];
-      (g.repos || []).forEach(function (r) {
-        (r.commits || []).forEach(function (c) { commits.push({ repo: r.name, msg: c.message, date: c.date, url: c.url }); });
-      });
-      commits.sort(function (a, b) { return b.date.localeCompare(a.date); });
-
-      document.querySelectorAll('[data-live-commits]').forEach(function (ul) {
-        ul.textContent = '';
-        commits.slice(0, Number(ul.dataset.liveCommits) || 5).forEach(function (c) {
-          var li = document.createElement('li');
-          li.className = 'lv-now__item';
-          var t = document.createElement('time'); t.textContent = ago(c.date);
-          li.append(t, ' ', link(c.msg, c.url), ' ');
-          var repo = document.createElement('span'); repo.className = 'lv-muted'; repo.textContent = c.repo;
-          li.append(repo);
-          ul.append(li);
-        });
-        if (!commits.length) ul.innerHTML = '<li class="lv-muted">No public commits yet.</li>';
-      });
-      document.querySelectorAll('[data-live-lastcommit]').forEach(function (el) {
-        el.textContent = commits[0] ? 'Last commit ' + ago(commits[0].date) + ': ' + commits[0].msg : '';
-      });
-      document.querySelectorAll('[data-live-log]').forEach(function (pre) {
-        if (pre.dataset.filled) return;
-        pre.dataset.filled = '1';
-        var lines = commits.slice(0, 5).map(function (c) { return c.date.slice(0, 10) + '  ' + c.repo + ': ' + c.msg; });
-        if (lines.length) pre.textContent = pre.textContent + '\n' + lines.join('\n');
-      });
-    }).catch(function () {
-      document.querySelectorAll('[data-live-commits]').forEach(function (ul) {
-        ul.innerHTML = '<li class="lv-muted">Commits unavailable right now.</li>';
-      });
-    });
   }
 
   function wireAsk() {
@@ -150,7 +100,6 @@
 
   if (PREVIEW) wirePreviewBar();
   loadStatus();
-  loadCommits();
   loadLately();
   wireAsk();
   setInterval(loadStatus, 60000);
