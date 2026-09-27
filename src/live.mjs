@@ -2,6 +2,10 @@
 // section, and the Ask box. Each has several design variants; site.config.json
 // picks one per feature for production, and the preview build renders every
 // variant so they can be compared with the switcher bar.
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 export const LIVE_FEATURES = {
   badge: [
@@ -29,6 +33,14 @@ const SLOTS = {
 };
 
 export const LIVE_ORIGIN = 'https://site.gumanpratap.workers.dev';
+
+// Content fingerprint for the live assets. The origin's CDN caches .js/.css, so
+// every change must get a new URL or visitors keep the old file.
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+export const ASSET_VERSION = createHash('sha1')
+  .update(readFileSync(join(ROOT, 'assets/js/live.js')))
+  .update(readFileSync(join(ROOT, 'assets/css/live.css')))
+  .digest('hex').slice(0, 10);
 
 const esc = (s) => String(s ?? '')
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -123,7 +135,7 @@ export function renderLive({ choice = {}, preview, now = [] }) {
 }
 
 export function liveScriptTag({ up, preview }) {
-  return `<script src="${up}assets/js/live.js" data-origin="${LIVE_ORIGIN}"${preview ? ' data-preview' : ''} defer></script>`;
+  return `<script src="${up}assets/js/live.js?v=${ASSET_VERSION}" data-origin="${LIVE_ORIGIN}"${preview ? ' data-preview' : ''} defer></script>`;
 }
 
 export function livePreviewBar() {

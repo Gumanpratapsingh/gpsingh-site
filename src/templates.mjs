@@ -1,6 +1,6 @@
 // Renders the site's HTML from data/profile.json + data/projects.json.
 // Every theme shares this markup; themes differ only in CSS.
-import { renderLive, liveScriptTag, livePreviewBar } from './live.mjs';
+import { renderLive, liveScriptTag, livePreviewBar, ASSET_VERSION } from './live.mjs';
 
 export const THEMES = [
   { id: 'atomic',    label: 'Atomic Diner' },
@@ -47,7 +47,7 @@ function head({ title, description, theme, preview, depth }) {
 <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Pacifico&family=Work+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@400;600&family=IBM+Plex+Mono:ital,wght@0,400;0,600;0,700;1,400&family=Bungee&family=Josefin+Sans:wght@400;600;700&family=Inter:wght@400;500;700;900&family=Anton&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%E2%98%85%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="${up}assets/css/base.css">
-  <link rel="stylesheet" href="${up}assets/css/live.css">
+  <link rel="stylesheet" href="${up}assets/css/live.css?v=${ASSET_VERSION}">
 ${css}
 </head>
 <body class="theme-${esc(theme)}">`;
