@@ -1,5 +1,6 @@
 // Renders the site's HTML from data/profile.json + data/projects.json.
 // Every theme shares this markup; themes differ only in CSS.
+import { renderLive, liveScriptTag, livePreviewBar } from './live.mjs';
 
 export const THEMES = [
   { id: 'atomic',    label: 'Atomic Diner' },
@@ -46,6 +47,7 @@ function head({ title, description, theme, preview, depth }) {
 <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Pacifico&family=Work+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@400;600&family=IBM+Plex+Mono:ital,wght@0,400;0,600;0,700;1,400&family=Bungee&family=Josefin+Sans:wght@400;600;700&family=Inter:wght@400;500;700;900&family=Anton&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%E2%98%85%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="${up}assets/css/base.css">
+  <link rel="stylesheet" href="${up}assets/css/live.css">
 ${css}
 </head>
 <body class="theme-${esc(theme)}">`;
@@ -63,7 +65,7 @@ function nav(depth, active) {
     </nav>`;
 }
 
-function masthead(profile, depth, active) {
+function masthead(profile, depth, active, slot = '') {
   return `<header class="masthead">
     <div class="masthead__rule masthead__rule--top" aria-hidden="true"></div>
     <p class="masthead__kicker">${esc(profile.kicker)}</p>
@@ -71,6 +73,7 @@ function masthead(profile, depth, active) {
     <p class="masthead__tagline">${esc(profile.tagline)}</p>
     <div class="masthead__rule masthead__rule--bottom" aria-hidden="true"></div>
     ${nav(depth, active)}
+    ${slot}
   </header>`;
 }
 
@@ -95,10 +98,11 @@ function projectCard(p, depth) {
     </li>`;
 }
 
-function footer(profile) {
+function footer(profile, slot = '') {
   const year = new Date().getUTCFullYear();
   return `<footer class="colophon">
     ${ornament()}
+    ${slot}
     <p>Set in hot metal and served static. &copy; ${year} ${esc(profile.name)}.</p>
   </footer>`;
 }
@@ -124,7 +128,8 @@ function previewBar(theme) {
   })();</script>`;
 }
 
-export function renderIndex({ profile, projects, theme, preview }) {
+export function renderIndex({ profile, projects, theme, preview, live = {}, now = [] }) {
+  const lv = renderLive({ choice: live, preview, now });
   const links = profile.links || {};
   const skills = (profile.skills || []).map((s) => `<li class="tag">${esc(s)}</li>`).join('');
   const bio = (profile.bio || []).map((p) => `<p>${esc(p)}</p>`).join('\n        ');
@@ -148,9 +153,10 @@ export function renderIndex({ profile, projects, theme, preview }) {
     : '';
 
   return `${head({ title: `${profile.name} — ${profile.tagline}`, description: (profile.bio || [''])[0], theme, preview, depth: 0 })}
-${preview ? previewBar(theme) : ''}
+${preview ? previewBar(theme) + livePreviewBar() : ''}
+${lv.top}
 <div class="paper">
-  ${masthead(profile, 0, 'about')}
+  ${masthead(profile, 0, 'about', lv.masthead)}
   <main>
     <section class="section" id="about">
       <h2 class="section__title">About the proprietor</h2>
@@ -159,6 +165,7 @@ ${preview ? previewBar(theme) : ''}
         <ul class="tags tags--skills">${skills}</ul>
       </div>
     </section>
+    ${lv.afterAbout}
 
     ${ornament()}
 
@@ -185,6 +192,8 @@ ${preview ? previewBar(theme) : ''}
       ${links.resume ? `<p class="section__cta"><a class="btn" href="${esc(links.resume)}">Download the full résumé</a></p>` : ''}
     </section>
 
+    ${lv.beforeContact}
+
     ${ornament()}
 
     <section class="section" id="contact">
@@ -197,8 +206,10 @@ ${preview ? previewBar(theme) : ''}
       </ul>
     </section>
   </main>
-  ${footer(profile)}
+  ${footer(profile, lv.footer)}
 </div>
+${lv.floating}
+${liveScriptTag({ up: '', preview })}
 </body>
 </html>`;
 }

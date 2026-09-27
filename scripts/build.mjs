@@ -18,6 +18,7 @@ const themeArg = (args.find((a) => a.startsWith('--theme=')) || '').split('=')[1
 const config = readJSON('site.config.json');
 const profile = readJSON('data/profile.json');
 const projects = readJSON('data/projects.json');
+const now = existsSync(join(ROOT, 'data/now.json')) ? readJSON('data/now.json') : [];
 
 const theme = themeArg || config.theme || 'atomic';
 if (!THEMES.some((t) => t.id === theme)) {
@@ -41,7 +42,7 @@ const write = (rel, html) => {
   writeFileSync(full, html);
 };
 
-write('index.html', renderIndex({ profile, projects: ordered, theme, preview }));
+write('index.html', renderIndex({ profile, projects: ordered, theme, preview, live: config.live, now }));
 for (const project of ordered) {
   write(join('projects', project.slug, 'index.html'),
         renderProject({ profile, project, theme, preview }));

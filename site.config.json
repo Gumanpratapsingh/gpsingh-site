@@ -1,4 +1,5 @@
 {
   "theme": "swiss",
-  "outDir": "dist"
+  "outDir": "dist",
+  "live": { "badge": "colophon", "now": "ticker", "ask": "masthead" }
 }

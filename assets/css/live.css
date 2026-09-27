@@ -1,0 +1,80 @@
+/* live.css — the phone-fed pieces: badge, Now, Ask. Uses the theme token contract. */
+
+/* preview build renders every variant; the switcher shows one per feature */
+.lv-variant{display:none}
+body[data-lv-badge="strip"]    .lv-variant[data-feature="badge"][data-variant="strip"],
+body[data-lv-badge="colophon"] .lv-variant[data-feature="badge"][data-variant="colophon"],
+body[data-lv-badge="chip"]     .lv-variant[data-feature="badge"][data-variant="chip"],
+body[data-lv-now="section"]    .lv-variant[data-feature="now"][data-variant="section"],
+body[data-lv-now="ticker"]     .lv-variant[data-feature="now"][data-variant="ticker"],
+body[data-lv-now="log"]        .lv-variant[data-feature="now"][data-variant="log"],
+body[data-lv-ask="section"]    .lv-variant[data-feature="ask"][data-variant="section"],
+body[data-lv-ask="floating"]   .lv-variant[data-feature="ask"][data-variant="floating"],
+body[data-lv-ask="masthead"]   .lv-variant[data-feature="ask"][data-variant="masthead"]{display:contents}
+.tpbar--live{top:auto;position:relative;background:#26262c}
+
+.lv-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.lv-muted{color:var(--ink-soft)}
+
+/* live dot: green pulse while the phone answers, grey when it does not */
+.lv-dot{display:inline-block;width:.55rem;height:.55rem;border-radius:50%;background:#1faa59;
+  box-shadow:0 0 0 0 rgba(31,170,89,.6);animation:lv-pulse 2s infinite;flex:none}
+.lv-offline .lv-dot{background:var(--ink-soft);animation:none}
+@keyframes lv-pulse{70%{box-shadow:0 0 0 .45rem rgba(31,170,89,0)}100%{box-shadow:0 0 0 0 rgba(31,170,89,0)}}
+
+/* ---------- badge: top strip ---------- */
+.lv-strip{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .75rem;
+  padding:.55rem var(--gutter);background:var(--ink);color:var(--paper);
+  font-family:var(--font-meta);font-size:.78rem;letter-spacing:.02em}
+.lv-strip__stats{opacity:.75}
+
+/* ---------- badge: footer line ---------- */
+.lv-colophon .lv-dot{margin-right:.45rem;vertical-align:.05em}
+
+/* ---------- badge: corner chip ---------- */
+.lv-chip{position:fixed;left:1rem;bottom:1rem;z-index:40;background:var(--paper);color:var(--ink);
+  border:1px solid var(--rule-thin);box-shadow:0 6px 24px rgba(0,0,0,.08);
+  font-family:var(--font-meta);font-size:.78rem;max-width:calc(100vw - 2rem)}
+.lv-chip summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:.5rem;padding:.55rem .8rem}
+.lv-chip summary::-webkit-details-marker{display:none}
+.lv-chip__stats{display:grid;grid-template-columns:auto 1fr;gap:.25rem 1rem;margin:0;padding:0 .8rem .8rem}
+.lv-chip__stats dt{color:var(--ink-soft)}
+.lv-chip__stats dd{margin:0}
+
+/* ---------- now ---------- */
+.lv-now__list,.lv-now__commits{list-style:none;margin:0;padding:0;display:grid;gap:.6rem;max-width:68ch}
+.lv-now__item{display:flex;gap:.85rem;align-items:baseline;flex-wrap:wrap}
+.lv-now__item time{font-family:var(--font-meta);font-size:.78rem;color:var(--accent);min-width:6.5rem;flex:none}
+.lv-now__item a{text-decoration:none}
+.lv-now__item a:hover{color:var(--accent)}
+.lv-now__item .lv-muted{font-size:.8rem}
+.lv-ticker{display:flex;flex-wrap:wrap;gap:.35rem .75rem;align-items:baseline;margin:1.25rem 0 0;
+  padding:.75rem 0 0;border-top:1px solid var(--rule-thin);font-size:.92rem;text-align:left}
+.lv-ticker b{font-family:var(--font-meta);color:var(--accent);text-transform:uppercase;letter-spacing:.12em;font-size:.72rem}
+.lv-ticker__commit{color:var(--ink-soft);font-size:.82rem}
+.lv-log__pre{margin:0;padding:1.25rem;background:var(--ink);color:var(--paper);overflow-x:auto;
+  font:500 .82rem/1.7 'IBM Plex Mono',ui-monospace,Menlo,monospace;white-space:pre-wrap;max-width:100%}
+
+/* ---------- ask ---------- */
+.lv-ask__form{display:flex;gap:.5rem;flex-wrap:wrap;max-width:44rem}
+.lv-ask__form input{flex:1 1 16rem;min-width:0;font:inherit;padding:.75rem .9rem;color:var(--ink);
+  background:var(--paper);border:2px solid var(--ink);border-radius:var(--card-radius)}
+.lv-ask__form input:focus{outline:none;border-color:var(--accent)}
+.lv-ask__form .btn{cursor:pointer}
+.lv-ask__form .btn:disabled{opacity:.5;cursor:wait}
+.lv-ask__form--stack{flex-direction:column}
+.lv-ask__form--stack input{flex:none}
+.lv-ask__answer{margin-top:1rem;max-width:66ch;padding:1rem 1.1rem;border-left:3px solid var(--accent);
+  background:color-mix(in srgb,var(--accent) 6%,var(--paper));white-space:pre-wrap}
+.lv-mask{margin-top:1.5rem}
+.lv-mask .lv-ask__form{margin:0}
+
+.lv-bubble{position:fixed;right:1rem;bottom:1rem;z-index:41}
+.lv-bubble summary{cursor:pointer;list-style:none;padding:.8rem 1.2rem;background:var(--accent);color:var(--paper);
+  font-family:var(--font-meta);font-size:.85rem;font-weight:600;border-radius:999px;box-shadow:0 6px 24px rgba(0,0,0,.15)}
+.lv-bubble summary::-webkit-details-marker{display:none}
+.lv-bubble__panel{position:absolute;right:0;bottom:calc(100% + .75rem);width:min(24rem,calc(100vw - 2rem));
+  background:var(--paper);border:1px solid var(--rule-thin);box-shadow:0 12px 40px rgba(0,0,0,.14);padding:1.1rem}
+.lv-bubble__title{margin:0 0 .75rem;font-family:var(--font-display);font-weight:700;font-size:1.1rem}
+
+@media print{.lv-chip,.lv-bubble,.lv-strip{display:none}}
